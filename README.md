@@ -1,3 +1,3 @@
 # HZS05VdbGyak01
 
-Readme teszt
+Gyak feladatok a hozzá tartozó branch-okon.
