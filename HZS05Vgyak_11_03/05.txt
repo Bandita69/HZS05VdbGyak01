@@ -1,0 +1,3 @@
+ALTER TABLE termekek ADD szin varchar(10);
+DROP termekek;
+ DELETE FROM termekek WHERE(kategoria IS NULL);
