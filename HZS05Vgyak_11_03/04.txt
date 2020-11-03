@@ -1,0 +1,5 @@
+ insert into termekek values(1,'valami',10,'yx');
+ insert into termekek values(2,'valami2',15,'yx');
+ insert into termekek values(3,'valami3',20,'xx');
+DELETE FROM termekek WHERE(ear<15);
+UPDATE termekek SET ear = (ear*0.9) WHERE (kategoria='xx');
