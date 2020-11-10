@@ -1,0 +1,55 @@
+11.10
+
+SELECT * from termekek WHERE ear>X;
+π * σ (ear>X)(termekek)
+
+SELECT adoszam, nev from gyarto WHERE (telephely IS 'X');
+π (adoszam, nev) σ (telephely='X')(gyarto) 
+
+SELECT count(*) as Ennyi from termekek WHERE ear>X;
+π count(*) σ (ear>X)(termekek)
+
+SELECT tkod from termek WHERE nev LIKE '%tej%';
+π tkod σ (nev LIKE '%tej%')(termekek)
+
+SELECT nev from gyarto WHERE telephely IS NULL;
+π (nev) σ (telephely = NULL)(gyarto) 
+
+
+
+2
+
+SELECT termek.nev, gyarto.nev from termek INNER JOIN gyarto ON termek.gyarto = gyarto.adoszam;
+
+SELECT termek.nev, termek.ear WHERE (gyarto.nev ='X') from termek INNER JOIN gyarto ON termek.gyarto = gyarto.adoszam;
+
+SELECT Alkatresz.nev WHERE (termek.nev = 'X') from termek INNER JOIN komponens ON termek.tkod = komponens.termek INNER JOIN Alkatresz ON komponens.alkatresz = Alkatresz.akod;
+
+SELECT termek.nev WHERE komponens.alkatresz IS NULL from termek INNER JOIN komponens ON termek.tkod = komponens.termek;
+
+
+3
+
+SELECT  tipus, COUNT(*) FROM Tanfolyam GROUP BY tipus;
+
+SELECT Tanfolyam.tkod, COUNT(*) FROM Tanfolyam INNER JOIN Befizetes ON Tanfolyam.tkod = Befizetes.kurzus GROUP BY Tanfolyam.tkod;
+
+SELECT Tanfolyam.megnevezes, COUNT(*) FROM Tanfolyam INNER JOIN Befizetes ON Tanfolyam.tkod = Befizetes.kurzus GROUP BY Tanfolyam.tkod;
+
+
+SELECT Tanfolyam.megnevezes, COUNT(*) WHERE (Tanfolyam.ar = befizetes.ar) FROM Tanfolyam INNER JOIN Befizetes ON Tanfolyam.tkod = Befizetes.kurzus GROUP BY Tanfolyam.tkod;
+
+
+SELECT resztvevo.lakcim,  COUNT(*) WHERE (Tanfolyam.megnevezes = 'X') FROM Tanfolyam INNER JOIN Befizetes ON Tanfolyam.tkod = Befizetes.kurzus INNER JOIN Reszvevo ON Befizetes.diak = resztvevo.tajszam GROUP BY resztvevo.lakcim;
+
+
+4
+
+SELECT count(*) FROM termekek WHERE (ear>(SELECT AVG(ear)FROM termekek));
+
+SELECT nev from termek  order by ear limit 1;
+
+SELECT gyarto.nev from termek INNER JOIN gyarto ON gyarto.adoszam = termek.gyarto order by termek.ear limit 1;
+
+
+
