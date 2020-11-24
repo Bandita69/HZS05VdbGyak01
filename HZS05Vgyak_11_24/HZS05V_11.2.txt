@@ -49,4 +49,5 @@ select Auto.Rendszam, Tulajdonos.Nev FROM Auto LEFT JOIN Tulajdonos ON Auto.tula
 6
 select * FROM Auto WHERE Auto.Ar > (select AVG(Auto.Ar) FROM Auto INNER JOIN Tulajdonos ON Auto.tulaj = Tulajdonos.Tkod WHERE Tulajdonos.Varos ='Miskolc');
 7
-select Rendszam FROM Auto WHERE 
+SELECT Ar,Kor FROM Auto GROUP BY Tipus HAVING COUNT(*) > 1 AND (Ar > AVG(AR)) AND (Kor > AVG(Kor));
+
